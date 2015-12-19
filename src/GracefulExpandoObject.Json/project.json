@@ -1,10 +1,15 @@
-{
+﻿{
   "version": "1.0.0-*",
-  "description": "An ExpandoObject that returns null instead of throwing an exception.",
+  "description": "An Json.Net converter that converts GracefulExpandoObject.",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "ExpandoObject" ],
-  "projectUrl": "https://github.com/mrahhal/GracefulExpandoObject",
-  "licenseUrl": "https://opensource.org/licenses/MIT",
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "dependencies": {
+    "GracefulExpandoObject": "",
+    "Newtonsoft.Json": "7.0.1"
+  },
 
   "frameworks": {
     "net451": { },
