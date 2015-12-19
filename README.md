@@ -9,6 +9,10 @@
 
 An ExpandoObject that returns null instead of throwing an exception.
 
+```
+PM> Install-Package GracefulExpandoObject
+```
+
 ### Usage
 
 ```c#
@@ -20,6 +24,10 @@ Assert.Null(result);
 ## `GracefulExpandoObject.Json`
 
 A Json.Net converter that converts GracefulExpandoObject.
+
+```
+PM> Install-Package GracefulExpandoObject.Json
+```
 
 ### Usage
 
