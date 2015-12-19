@@ -2,8 +2,8 @@
 <Project DefaultTargets="Build;Test;Package" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
 		<Major>1</Major>
-		<Minor>0</Minor>
-		<Patch>1</Patch>
+		<Minor>1</Minor>
+		<Patch>0</Patch>
 		<Build>0</Build>
 		<Quality></Quality>
 		<AssemblyProduct>GracefulExpandoObject: An ExpandoObject that returns null instead of throwing an exception.</AssemblyProduct>
