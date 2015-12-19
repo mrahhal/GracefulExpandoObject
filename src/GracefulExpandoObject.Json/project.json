@@ -1,6 +1,6 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "An Json.Net converter that converts GracefulExpandoObject.",
+  "description": "A Json.Net converter that converts GracefulExpandoObject.",
   "authors": [ "Mohammad Rahhal" ],
   "tags": [ "" ],
   "projectUrl": "",
