@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 
-namespace GracefulExpandoObject
+namespace MR
 {
 	public class GracefulExpandoObject : DynamicObject, IDictionary<string, object>
 	{

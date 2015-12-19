@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace GracefulExpandoObject
+namespace MR
 {
 	public class GracefulDictionaryTest
 	{

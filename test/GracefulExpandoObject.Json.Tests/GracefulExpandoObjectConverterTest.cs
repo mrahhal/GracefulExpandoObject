@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Xunit;
 
-namespace GracefulExpandoObject.Json
+namespace MR.Json
 {
 	public class GracefulExpandoObjectConverterTest
 	{

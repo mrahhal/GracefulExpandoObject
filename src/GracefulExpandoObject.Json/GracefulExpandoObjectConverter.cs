@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace GracefulExpandoObject.Json
+namespace MR.Json
 {
 	public class GracefulExpandoObjectConverter : JsonConverter
 	{

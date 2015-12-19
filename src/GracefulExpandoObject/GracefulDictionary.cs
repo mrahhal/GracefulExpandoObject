@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GracefulExpandoObject
+namespace MR
 {
 	public class GracefulDictionary : IDictionary<string, object>
 	{
