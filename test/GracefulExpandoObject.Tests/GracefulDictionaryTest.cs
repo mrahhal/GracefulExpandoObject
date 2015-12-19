@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace MR
+namespace MR.Tests
 {
 	public class GracefulDictionaryTest
 	{
