@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "A Json.Net converter that converts GracefulExpandoObject.",
   "authors": [ "Mohammad Rahhal" ],

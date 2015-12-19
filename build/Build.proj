@@ -23,6 +23,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<AspNet5Assemblies Include="GracefulExpandoObject" />
+		<AspNet5Assemblies Include="GracefulExpandoObject.Json" />
 	</ItemGroup>
 	<Import Project="Build.tasks" />
 
@@ -67,6 +68,9 @@
 	<Target Name="Test" DependsOnTargets="Build">
 		<Exec
 			WorkingDirectory="$(RootDir)/test/GracefulExpandoObject.Tests/"
+			Command="dnx test" />
+		<Exec
+			WorkingDirectory="$(RootDir)/test/GracefulExpandoObject.Json.Tests/"
 			Command="dnx test" />
 	</Target>
 	<Target Name="Package" DependsOnTargets="Build;Test">
