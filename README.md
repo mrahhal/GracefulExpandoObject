@@ -7,7 +7,7 @@
 
 ## `GracefulExpandoObject`
 
-An ExpandoObject that returns null instead of throwing an exception.
+An `ExpandoObject` (but doesn't actually extend it) that returns null instead of throwing an exception.
 
 ```
 PM> Install-Package GracefulExpandoObject
@@ -23,7 +23,7 @@ Assert.Null(result);
 
 ## `GracefulExpandoObject.Json`
 
-A Json.Net converter that converts GracefulExpandoObject.
+A Json.Net converter that converts to `GracefulExpandoObject`.
 
 ```
 PM> Install-Package GracefulExpandoObject.Json
