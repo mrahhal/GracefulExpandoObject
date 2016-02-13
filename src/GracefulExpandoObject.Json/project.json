@@ -2,9 +2,9 @@
   "version": "1.0.0-*",
   "description": "A Json.Net converter that converts GracefulExpandoObject.",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "tags": [ "ExpandoObject" ],
+  "projectUrl": "https://github.com/mrahhal/GracefulExpandoObject",
+  "licenseUrl": "https://opensource.org/licenses/MIT",
 
   "dependencies": {
     "GracefulExpandoObject": "",
