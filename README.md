@@ -26,10 +26,10 @@ You can also convert from a clr object:
 var obj = new { Foo = "foo" };
 
 // Shallow conversion
-var shallowGeo = GracefulExpandoObject.FromObject(obj);
+dynamic shallowGeo = GracefulExpandoObject.FromObject(obj);
 
 // Deep conversion
-var deeoGeo = GracefulExpandoObject.FromObject(obj, deep: true);
+dynamic deeoGeo = GracefulExpandoObject.FromObject(obj, deep: true);
 ```
 
 ## `GracefulExpandoObject.Json` [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.Json.svg)](https://www.nuget.org/packages/GracefulExpandoObject.Json)
