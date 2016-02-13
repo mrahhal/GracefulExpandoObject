@@ -109,5 +109,29 @@ namespace MR
 			_map[binder.Name] = value;
 			return true;
 		}
+
+		public static GracefulExpandoObject FromObject(object obj)
+		{
+			if (obj == null)
+			{
+				throw new ArgumentNullException(nameof(obj));
+			}
+
+			var geo = new GracefulExpandoObject();
+			var type = obj.GetType();
+			var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+			foreach (var property in properties)
+			{
+				var value = property.GetValue(obj);
+				if (!property.PropertyType.GetTypeInfo().IsPrimitive && value == null)
+				{
+					continue;
+				}
+				geo.Add(property.Name, value);
+			}
+
+			return geo;
+		}
 	}
 }
