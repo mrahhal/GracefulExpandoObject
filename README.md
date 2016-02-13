@@ -21,6 +21,17 @@ var result = geo.Foo;
 Assert.Null(result);
 ```
 
+You can also convert from a clr object:
+```c#
+var obj = new { Foo = "foo" };
+
+// Shallow conversion
+var shallowGeo = GracefulExpandoObject.FromObject(obj);
+
+// Deep conversion
+var deeoGeo = GracefulExpandoObject.FromObject(obj, deep: true);
+```
+
 ## `GracefulExpandoObject.Json` [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.Json.svg)](https://www.nuget.org/packages/GracefulExpandoObject.Json)
 
 A Json.Net converter that converts to `GracefulExpandoObject`.
