@@ -110,21 +110,26 @@ namespace MR
 			return true;
 		}
 
-		public static GracefulExpandoObject FromObject(object obj)
+		public static GracefulExpandoObject FromObject(object obj, bool deep = false)
 		{
 			if (obj == null)
 			{
 				throw new ArgumentNullException(nameof(obj));
 			}
 
+			return deep ? FromObjectDeep(obj) : FromObjectShallow(obj);
+		}
+
+		private static GracefulExpandoObject FromObjectShallow(object obj)
+		{
 			var geo = new GracefulExpandoObject();
 			var type = obj.GetType();
-			var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+			var properties = GetProperties(type);
 
 			foreach (var property in properties)
 			{
 				var value = property.GetValue(obj);
-				if (!property.PropertyType.GetTypeInfo().IsPrimitive && value == null)
+				if (!IsPrimitive(property.PropertyType) && value == null)
 				{
 					continue;
 				}
@@ -133,5 +138,39 @@ namespace MR
 
 			return geo;
 		}
+
+		private static GracefulExpandoObject FromObjectDeep(object obj)
+		{
+			var geo = new GracefulExpandoObject();
+			var type = obj.GetType();
+			var properties = GetProperties(type);
+
+			foreach (var property in properties)
+			{
+				if (IsPrimitive(property.PropertyType))
+				{
+					var value = property.GetValue(obj);
+					geo.Add(property.Name, value);
+				}
+				else
+				{
+					var value = property.GetValue(obj);
+					if (value != null)
+					{
+						geo.Add(property.Name, FromObjectDeep(value));
+					}
+				}
+			}
+
+			return geo;
+		}
+
+		private static IEnumerable<PropertyInfo> GetProperties(Type type) =>
+			type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+		private static bool IsPrimitive(Type type) =>
+			type.GetTypeInfo().IsPrimitive ||
+			type.GetTypeInfo().IsValueType ||
+			type == typeof(string);
 	}
 }

@@ -56,5 +56,31 @@ namespace MR.Tests
 			Assert.Null(geo.Too);
 			Assert.False(map.ContainsKey("Too"));
 		}
+
+		[Fact]
+		public void FromObject_Deep()
+		{
+			var obj = new
+			{
+				Foo = "foo",
+				Bar = new
+				{
+					Some = "some",
+					Too = default(object)
+				},
+				Created = new DateTime(42)
+			};
+
+			dynamic geo = GracefulExpandoObject.FromObject(obj, true);
+			var map = geo as IDictionary<string, object>;
+
+			Assert.Equal("foo", geo.Foo);
+			Assert.NotNull(geo.Bar);
+			Assert.IsType<GracefulExpandoObject>(geo.Bar);
+			Assert.Equal("some", geo.Bar.Some);
+			Assert.Null(geo.Bar.Too);
+			Assert.False(((IDictionary<string, object>)geo.Bar).ContainsKey("Too"));
+			Assert.Equal(new DateTime(42), geo.Created);
+		}
 	}
 }
