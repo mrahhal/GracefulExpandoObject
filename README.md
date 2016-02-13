@@ -5,7 +5,7 @@
 [![Nuget downloads](https://img.shields.io/nuget/dt/GracefulExpandoObject.svg)](https://www.nuget.org/packages/GracefulExpandoObject)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## `GracefulExpandoObject`
+## `GracefulExpandoObject` [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.svg)](https://www.nuget.org/packages/GracefulExpandoObject)
 
 An `ExpandoObject` (but doesn't actually extend it) that returns null instead of throwing an exception.
 
@@ -21,7 +21,7 @@ var result = geo.Foo;
 Assert.Null(result);
 ```
 
-## `GracefulExpandoObject.Json`
+## `GracefulExpandoObject.Json` [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.Json.svg)](https://www.nuget.org/packages/GracefulExpandoObject.Json)
 
 A Json.Net converter that converts to `GracefulExpandoObject`.
 
