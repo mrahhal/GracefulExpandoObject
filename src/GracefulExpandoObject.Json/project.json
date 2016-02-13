@@ -12,7 +12,7 @@
   },
 
   "frameworks": {
-    "net451": { },
+    "net45": { },
     "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
