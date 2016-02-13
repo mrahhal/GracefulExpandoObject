@@ -4,19 +4,19 @@ namespace MR
 {
 	public class GracefulDictionary : IDictionary<string, object>
 	{
-		protected Dictionary<string, object> _dictionary = new Dictionary<string, object>();
+		protected Dictionary<string, object> _map = new Dictionary<string, object>();
 
 		public object this[string key]
 		{
 			get
 			{
 				object val = null;
-				_dictionary.TryGetValue(key, out val);
+				_map.TryGetValue(key, out val);
 				return val;
 			}
 			set
 			{
-				_dictionary[key] = value;
+				_map[key] = value;
 			}
 		}
 
@@ -27,57 +27,57 @@ namespace MR
 
 		public void Add(string key, object value)
 		{
-			_dictionary.Add(key, value);
+			_map.Add(key, value);
 		}
 
 		public bool ContainsKey(string key)
 		{
-			return _dictionary.ContainsKey(key);
+			return _map.ContainsKey(key);
 		}
 
 		public ICollection<string> Keys
 		{
-			get { return _dictionary.Keys; }
+			get { return _map.Keys; }
 		}
 
 		public bool Remove(string key)
 		{
-			return _dictionary.Remove(key);
+			return _map.Remove(key);
 		}
 
 		public bool TryGetValue(string key, out object value)
 		{
-			return _dictionary.TryGetValue(key, out value);
+			return _map.TryGetValue(key, out value);
 		}
 
 		public ICollection<object> Values
 		{
-			get { return _dictionary.Values; }
+			get { return _map.Values; }
 		}
 
 		public void Add(KeyValuePair<string, object> item)
 		{
-			((IDictionary<string, object>)_dictionary).Add(item);
+			((IDictionary<string, object>)_map).Add(item);
 		}
 
 		public void Clear()
 		{
-			_dictionary.Clear();
+			_map.Clear();
 		}
 
 		public bool Contains(KeyValuePair<string, object> item)
 		{
-			return ((IDictionary<string, object>)_dictionary).Contains(item);
+			return ((IDictionary<string, object>)_map).Contains(item);
 		}
 
 		public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
 		{
-			((IDictionary<string, object>)_dictionary).CopyTo(array, arrayIndex);
+			((IDictionary<string, object>)_map).CopyTo(array, arrayIndex);
 		}
 
 		public int Count
 		{
-			get { return _dictionary.Count; }
+			get { return _map.Count; }
 		}
 
 		public bool Remove(KeyValuePair<string, object> item)
@@ -87,12 +87,12 @@ namespace MR
 
 		public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
 		{
-			return ((IDictionary<string, object>)_dictionary).GetEnumerator();
+			return ((IDictionary<string, object>)_map).GetEnumerator();
 		}
 
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
-			return _dictionary.GetEnumerator();
+			return _map.GetEnumerator();
 		}
 	}
 }

@@ -65,7 +65,7 @@ namespace MR.Json
 
 		private object ReadObject(JsonReader reader)
 		{
-			IDictionary<string, object> expandoObject = new GracefulExpandoObject();
+			var geo = new GracefulExpandoObject();
 
 			while (reader.Read())
 			{
@@ -81,14 +81,14 @@ namespace MR.Json
 
 						object v = ReadValue(reader);
 
-						expandoObject[propertyName] = v;
+						geo[propertyName] = v;
 						break;
 
 					case JsonToken.Comment:
 						break;
 
 					case JsonToken.EndObject:
-						return expandoObject;
+						return geo;
 				}
 			}
 
