@@ -29,7 +29,7 @@ var obj = new { Foo = "foo" };
 dynamic shallowGeo = GracefulExpandoObject.FromObject(obj);
 
 // Deep conversion
-dynamic deeoGeo = GracefulExpandoObject.FromObject(obj, deep: true);
+dynamic deepGeo = GracefulExpandoObject.FromObject(obj, deep: true);
 ```
 
 ## `GracefulExpandoObject.Json` [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.Json.svg)](https://www.nuget.org/packages/GracefulExpandoObject.Json)
