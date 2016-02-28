@@ -54,7 +54,58 @@ namespace MR.Tests
 			Assert.Equal(2, geo.Bar);
 			Assert.True(geo.Baz);
 			Assert.Null(geo.Too);
-			Assert.False(map.ContainsKey("Too"));
+			Assert.True(map.ContainsKey("Too"));
+		}
+
+		[Fact]
+		public void FromObject_DoesNotIgnoreNullValuesForComplexPropertiesByDefault()
+		{
+			var obj = new
+			{
+				Foo = "foo",
+				Bar = default(object)
+			};
+
+			dynamic geo = GracefulExpandoObject.FromObject(obj);
+			var map = geo as IDictionary<string, object>;
+
+			Assert.True(map.ContainsKey("Bar"));
+			Assert.Null(geo.Bar);
+		}
+
+		[Fact]
+		public void FromObject_IgnoreNullValues_IgnoresNullValuesForComplexProperties()
+		{
+			var obj = new
+			{
+				Foo = "foo",
+				Bar = default(object)
+			};
+
+			dynamic geo = GracefulExpandoObject.FromObject(obj, deep: false, ignoreNullValues: true);
+			var map = geo as IDictionary<string, object>;
+
+			Assert.False(map.ContainsKey("Bar"));
+		}
+
+		[Fact]
+		public void FromObject_Deep_DoesNotIgnoreNullValuesForComplexPropertiesByDefault()
+		{
+			var obj = new
+			{
+				Foo = "foo",
+				Bar = default(object),
+				Baz = new
+				{
+					Some = "some"
+				}
+			};
+
+			dynamic geo = GracefulExpandoObject.FromObject(obj, true);
+			var map = geo as IDictionary<string, object>;
+
+			Assert.True(map.ContainsKey("Bar"));
+			Assert.Null(geo.Bar);
 		}
 
 		[Fact]
@@ -79,7 +130,7 @@ namespace MR.Tests
 			Assert.IsType<GracefulExpandoObject>(geo.Bar);
 			Assert.Equal("some", geo.Bar.Some);
 			Assert.Null(geo.Bar.Too);
-			Assert.False(((IDictionary<string, object>)geo.Bar).ContainsKey("Too"));
+			Assert.True(((IDictionary<string, object>)geo.Bar).ContainsKey("Too"));
 			Assert.Equal(new DateTime(42), geo.Created);
 		}
 	}

@@ -110,17 +110,17 @@ namespace MR
 			return true;
 		}
 
-		public static GracefulExpandoObject FromObject(object obj, bool deep = false)
+		public static GracefulExpandoObject FromObject(object obj, bool deep = false, bool ignoreNullValues = false)
 		{
 			if (obj == null)
 			{
 				throw new ArgumentNullException(nameof(obj));
 			}
 
-			return deep ? FromObjectDeep(obj) : FromObjectShallow(obj);
+			return deep ? FromObjectDeep(obj, ignoreNullValues) : FromObjectShallow(obj, ignoreNullValues);
 		}
 
-		private static GracefulExpandoObject FromObjectShallow(object obj)
+		private static GracefulExpandoObject FromObjectShallow(object obj, bool ignoreNullValues)
 		{
 			var geo = new GracefulExpandoObject();
 			var type = obj.GetType();
@@ -129,7 +129,7 @@ namespace MR
 			foreach (var property in properties)
 			{
 				var value = property.GetValue(obj);
-				if (!IsPrimitive(property.PropertyType) && value == null)
+				if (ignoreNullValues && !IsPrimitive(property.PropertyType) && value == null)
 				{
 					continue;
 				}
@@ -139,7 +139,7 @@ namespace MR
 			return geo;
 		}
 
-		private static GracefulExpandoObject FromObjectDeep(object obj)
+		private static GracefulExpandoObject FromObjectDeep(object obj, bool ignoreNullValues)
 		{
 			var geo = new GracefulExpandoObject();
 			var type = obj.GetType();
@@ -155,9 +155,17 @@ namespace MR
 				else
 				{
 					var value = property.GetValue(obj);
-					if (value != null)
+					if (ignoreNullValues && value == null)
 					{
-						geo.Add(property.Name, FromObjectDeep(value));
+						continue;
+					}
+					if (value == null)
+					{
+						geo.Add(property.Name, null);
+					}
+					else
+					{
+						geo.Add(property.Name, FromObjectDeep(value, ignoreNullValues));
 					}
 				}
 			}
