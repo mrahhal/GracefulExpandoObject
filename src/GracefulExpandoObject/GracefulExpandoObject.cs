@@ -174,7 +174,7 @@ namespace MR
 		}
 
 		private static IEnumerable<PropertyInfo> GetProperties(Type type) =>
-			type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+			type.GetRuntimeProperties();
 
 		private static bool IsPrimitive(Type type) =>
 			type.GetTypeInfo().IsPrimitive ||

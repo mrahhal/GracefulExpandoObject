@@ -2,7 +2,6 @@
 
 [![Build status](https://img.shields.io/appveyor/ci/mrahhal/GracefulExpandoObject/master.svg)](https://ci.appveyor.com/project/mrahhal/GracefulExpandoObject)
 [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.svg)](https://www.nuget.org/packages/GracefulExpandoObject)
-[![Nuget downloads](https://img.shields.io/nuget/dt/GracefulExpandoObject.svg)](https://www.nuget.org/packages/GracefulExpandoObject)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## `GracefulExpandoObject` [![Nuget version](https://img.shields.io/nuget/v/GracefulExpandoObject.svg)](https://www.nuget.org/packages/GracefulExpandoObject)
