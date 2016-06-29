@@ -11,15 +11,15 @@
 
   "dependencies": {
     "GracefulExpandoObject": "*",
-    "Newtonsoft.Json": "8.0.4-beta1"
+    "Newtonsoft.Json": "9.0.1"
   },
 
   "frameworks": {
     "net451": { },
     "netstandard1.0": {
       "dependencies": {
-        "NETStandard.Library": "1.5.0-rc2-24027",
-        "System.Dynamic.Runtime": "4.0.11-rc2-*"
+        "NETStandard.Library": "1.6.0",
+        "System.Dynamic.Runtime": "4.0.11"
       }
     }
   }
