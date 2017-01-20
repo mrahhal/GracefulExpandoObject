@@ -1,19 +1,20 @@
-{
-  "version": "1.0.0-*",
+﻿{
+  "version": "1.5.0-*",
   "description": "An ExpandoObject that returns null instead of throwing an exception.",
-  "authors": [ "Mohammad Rahhal" ],
-
+  "authors": [
+    "Mohammad Rahhal"
+  ],
   "packOptions": {
-    "tags": [ "ExpandoObject", "dynamic" ],
+    "tags": [
+      "ExpandoObject",
+      "dynamic"
+    ],
     "projectUrl": "https://github.com/mrahhal/GracefulExpandoObject",
     "licenseUrl": "https://opensource.org/licenses/MIT"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "frameworks": {
-    "net451": { },
+    "net451": {},
     "netstandard1.0": {
       "dependencies": {
         "NETStandard.Library": "1.6.0",
