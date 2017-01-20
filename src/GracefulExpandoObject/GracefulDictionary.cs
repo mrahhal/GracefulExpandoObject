@@ -2,15 +2,19 @@ using System.Collections.Generic;
 
 namespace MR
 {
-	public class GracefulDictionary : IDictionary<string, object>
+	public class GracefulDictionary : GracefulDictionary<string, object>
 	{
-		protected Dictionary<string, object> _map = new Dictionary<string, object>();
+	}
 
-		public object this[string key]
+	public class GracefulDictionary<TKey, TValue> : IDictionary<TKey, TValue>
+	{
+		protected Dictionary<TKey, TValue> _map = new Dictionary<TKey, TValue>();
+
+		public TValue this[TKey key]
 		{
 			get
 			{
-				object val = null;
+				TValue val = default(TValue);
 				_map.TryGetValue(key, out val);
 				return val;
 			}
@@ -25,39 +29,39 @@ namespace MR
 			get { return false; }
 		}
 
-		public void Add(string key, object value)
+		public void Add(TKey key, TValue value)
 		{
 			_map.Add(key, value);
 		}
 
-		public bool ContainsKey(string key)
+		public bool ContainsKey(TKey key)
 		{
 			return _map.ContainsKey(key);
 		}
 
-		public ICollection<string> Keys
+		public ICollection<TKey> Keys
 		{
 			get { return _map.Keys; }
 		}
 
-		public bool Remove(string key)
+		public bool Remove(TKey key)
 		{
 			return _map.Remove(key);
 		}
 
-		public bool TryGetValue(string key, out object value)
+		public bool TryGetValue(TKey key, out TValue value)
 		{
 			return _map.TryGetValue(key, out value);
 		}
 
-		public ICollection<object> Values
+		public ICollection<TValue> Values
 		{
 			get { return _map.Values; }
 		}
 
-		public void Add(KeyValuePair<string, object> item)
+		public void Add(KeyValuePair<TKey, TValue> item)
 		{
-			((IDictionary<string, object>)_map).Add(item);
+			((IDictionary<TKey, TValue>)_map).Add(item);
 		}
 
 		public void Clear()
@@ -65,14 +69,14 @@ namespace MR
 			_map.Clear();
 		}
 
-		public bool Contains(KeyValuePair<string, object> item)
+		public bool Contains(KeyValuePair<TKey, TValue> item)
 		{
-			return ((IDictionary<string, object>)_map).Contains(item);
+			return ((IDictionary<TKey, TValue>)_map).Contains(item);
 		}
 
-		public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
+		public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
 		{
-			((IDictionary<string, object>)_map).CopyTo(array, arrayIndex);
+			((IDictionary<TKey, TValue>)_map).CopyTo(array, arrayIndex);
 		}
 
 		public int Count
@@ -80,14 +84,14 @@ namespace MR
 			get { return _map.Count; }
 		}
 
-		public bool Remove(KeyValuePair<string, object> item)
+		public bool Remove(KeyValuePair<TKey, TValue> item)
 		{
 			return Remove(item);
 		}
 
-		public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
 		{
-			return ((IDictionary<string, object>)_map).GetEnumerator();
+			return ((IDictionary<TKey, TValue>)_map).GetEnumerator();
 		}
 
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
